@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floatplane Startseite</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #121212; color: #fff; margin: 0; padding: 0; text-align: center; }
+        .container { max-width: 900px; margin: 80px auto 20px; }
+        .creator-card { display: flex; align-items: center; background: #1e1e1e; padding: 20px; margin: 15px; border-radius: 10px; cursor: pointer; transition: background 0.3s; }
+        .creator-card:hover { background: #0073e6; }
+        .creator-card img { width: 50px; height: 50px; border-radius: 50%; margin-right: 15px; }
+        .creator-info { text-align: left; }
+        a { text-decoration: none; color: #fff; display: block; }
+    </style>
+</head>
+<body>
+    <h1>Willkommen bei Floatplane</h1>
+    <p>Wähle einen Creator aus:</p>
+    <div class="container">
+        <div class="creator-card" onclick="location.href='blizkey.html'">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/blizkey-profile_image-70x70.png" alt="Blizkey">
+            <div class="creator-info">
+                <h2>Blizkey</h2>
+            </div>
+        </div>
+        <div class="creator-card" onclick="location.href='hu_stensaft.html'">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/hu_stensaft-profile_image-70x70.png" alt="Hu_stensaft">
+            <div class="creator-info">
+                <h2>Hu_stensaft</h2>
+            </div>
+        </div>
+        <div class="creator-card" onclick="location.href='vletti.html'">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/vletti-profile_image-70x70.png" alt="VLetti">
+            <div class="creator-info">
+                <h2>VLetti</h2>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
