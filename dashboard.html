@@ -7,35 +7,121 @@
     <style>
         body { font-family: Arial, sans-serif; background-color: #121212; color: #fff; margin: 0; padding: 0; text-align: center; }
         .container { max-width: 900px; margin: 80px auto 20px; }
-        .creator-card { display: flex; align-items: center; background: #1e1e1e; padding: 20px; margin: 15px; border-radius: 10px; cursor: pointer; transition: background 0.3s; }
-        .creator-card:hover { background: #0073e6; }
-        .creator-card img { width: 50px; height: 50px; border-radius: 50%; margin-right: 15px; }
-        .creator-info { text-align: left; }
-        a { text-decoration: none; color: #fff; display: block; }
+        .creator-card { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px; 
+            margin: 15px; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            border: 3px solid transparent;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
+            position: relative;
+        }
+        .creator-card:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .creator-card img { width: 50px; height: 50px; border-radius: 50%; }
+        .creator-info { text-align: center; }
+        .social-icons {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.5);
+            display: flex;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .creator-card:hover .social-icons {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.2s ease;
+        }
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
+        /* Farben für Creator */
+        .blizkey { border-color: #6a0dad; }
+        .hu_stensaft { border-color: #008f39; }
+        .vletti { border-color: #e63946; }
+        /* Animierte Überschrift */
+        h1 {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 4px solid #fff;
+            width: 0;
+            animation: typing 2s steps(30, end) forwards, blink 0.5s infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
     </style>
 </head>
 <body>
     <h1>Willkommen bei Floatplane</h1>
     <p>Wähle einen Creator aus:</p>
     <div class="container">
-        <div class="creator-card" onclick="location.href='blizkey.html'">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/blizkey-profile_image-70x70.png" alt="Blizkey">
-            <div class="creator-info">
-                <h2>Blizkey</h2>
-            </div>
-        </div>
-        <div class="creator-card" onclick="location.href='hu_stensaft.html'">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/hu_stensaft-profile_image-70x70.png" alt="Hu_stensaft">
-            <div class="creator-info">
-                <h2>Hu_stensaft</h2>
-            </div>
-        </div>
-        <div class="creator-card" onclick="location.href='vletti.html'">
+        <div class="creator-card vletti" onclick="location.href='vletti.html'">
             <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/vletti-profile_image-70x70.png" alt="VLetti">
             <div class="creator-info">
                 <h2>VLetti</h2>
             </div>
+            <div class="social-icons" id="vletti-icons"></div>
+        </div>
+        <div class="creator-card blizkey" onclick="location.href='blizkey.html'">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/blizkey-profile_image-70x70.png" alt="Blizkey">
+            <div class="creator-info">
+                <h2>Blizkey</h2>
+            </div>
+            <div class="social-icons" id="blizkey-icons"></div>
+        </div>
+        <div class="creator-card hu_stensaft" onclick="location.href='hu_stensaft.html'">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/hu_stensaft-profile_image-70x70.png" alt="Hu_stensaft">
+            <div class="creator-info">
+                <h2>Hu_stensaft</h2>
+            </div>
+            <div class="social-icons" id="hu_stensaft-icons"></div>
         </div>
     </div>
+    <script>
+        const creators = {
+            vletti: { twitch: true, youtube: false, instagram: true, tiktok: true },
+            blizkey: { twitch: true, youtube: true, instagram: true, tiktok: false },
+            hu_stensaft: { twitch: true, youtube: true, instagram: false, tiktok: true }
+        };
+
+        function loadSocialIcons(creatorId) {
+            const icons = {
+                twitch: 'icons/twitch.png',
+                youtube: 'icons/youtube.png',
+                instagram: 'icons/instagram.png',
+                tiktok: 'icons/tiktok.png'
+            };
+            
+            const container = document.getElementById(`${creatorId}-icons`);
+            Object.keys(creators[creatorId]).forEach(platform => {
+                if (creators[creatorId][platform]) {
+                    const img = document.createElement('img');
+                    img.src = icons[platform];
+                    img.alt = platform;
+                    container.appendChild(img);
+                }
+            });
+        }
+
+        Object.keys(creators).forEach(loadSocialIcons);
+    </script>
 </body>
 </html>
