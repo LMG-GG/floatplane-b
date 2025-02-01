@@ -13,16 +13,81 @@
         .tab-content { display: none; margin-top: 20px; }
         .active-tab { background-color: #f1f1f1; }
 
-        /* Spezifisch für den Livestream */
-        .twitch-embed { 
+        /* Twitch-Embed Styling */
+        .twitch-embed {
             width: 100%;
             height: 600px;
             border: none;
+            border-radius: 10px;
+        }
+        
+        /* Creator Card Styles */
+        .creator-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+        }
+        .creator-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .creator-card img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .creator-info { text-align: center; }
+
+        /* Social Icons */
+        .social-icons {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.5);
+            display: flex;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .creator-card:hover .social-icons {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.2s ease;
+        }
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        /* Animierte Überschrift */
+        h1 {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 4px solid #fff;
+            width: 0;
+            animation: typing 2s steps(30, end) forwards, blink 0.5s infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
         }
     </style>
 </head>
 <body>
-    <h1>VLetti</h1>
+    <h1>VLetti - Floatplane</h1>
 
     <div class="tabs">
         <button class="tab active-tab" onclick="openTab('videos')">Videos</button>
@@ -34,25 +99,27 @@
         <!-- Videos Tab -->
         <div class="tab-content" id="videos">
             <h2>VLetti's Videos</h2>
-            <!-- Videos einfügen -->
+            <!-- Videos hier einfügen -->
         </div>
 
         <!-- Clips Tab -->
         <div class="tab-content" id="clips">
             <h2>VLetti's Clips</h2>
-            <!-- Clips einfügen -->
+            <!-- Clips hier einfügen -->
         </div>
 
         <!-- Livestream Tab -->
         <div class="tab-content" id="livestream">
             <h2>VLetti's Livestream</h2>
-            <iframe 
-                class="twitch-embed"
-                src="https://player.twitch.tv/?channel=vletti&autoplay=true"
-                frameborder="0" 
-                allowfullscreen="true" 
-                scrolling="no">
-            </iframe>
+            <!-- Einfaches Twitch-Stream Embed mit angepasstem Design -->
+            <div style="max-width: 900px; margin: 0 auto;">
+                <iframe 
+                    class="twitch-embed" 
+                    src="https://www.twitch.tv/embed/vletti/chat?parent=localhost" 
+                    frameborder="0" 
+                    allowfullscreen="true">
+                </iframe>
+            </div>
         </div>
     </div>
 
@@ -63,13 +130,14 @@
 
             const tabs = document.querySelectorAll('.tab');
             tabs.forEach(tab => tab.classList.remove('active-tab'));
-
+            
             document.getElementById(tabName).style.display = 'block';
             const activeTab = document.querySelector(`.tab[onclick="openTab('${tabName}')"]`);
             activeTab.classList.add('active-tab');
         }
 
-        document.getElementById('videos').style.display = 'block';
+        // Initial display of Videos tab
+        openTab('videos');
     </script>
 </body>
 </html>
