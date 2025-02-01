@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #e63946;
+            background-color: #e63946; /* Farbe aus dem ursprünglichen Code */
             color: #fff;
             margin: 0;
             padding: 0;
@@ -57,10 +57,21 @@
             border: none;
             border-radius: 10px;
         }
+
+        /* Profilbild Styling */
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <h1>VLetti - Floatplane</h1>
+
+    <!-- Profilbild -->
+    <img src="URL_TO_PROFILE_IMAGE" alt="VLetti's Profilbild" class="profile-img">
 
     <div class="tabs">
         <button class="tab active-tab" onclick="openTab('videos')">Videos</button>
@@ -84,7 +95,6 @@
         <!-- Livestream Tab -->
         <div class="tab-content" id="livestream">
             <h2>VLetti's Livestream</h2>
-            <!-- Einfaches Twitch-Stream Embed mit angepasstem Design -->
             <div style="max-width: 900px; margin: 0 auto;">
                 <iframe class="twitch-embed" 
                         src="https://www.twitch.tv/embed/vletti/chat?parent=localhost" 
