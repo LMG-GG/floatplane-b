@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passwortprüfung</title>
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("password").value;
+            if (password === "2202") {
+                window.location.href = "blizkey.html";
+            } else {
+                alert("Falsches Passwort! Versuche es erneut.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Passwort eingeben</h2>
+    <input type="password" id="password" placeholder="Passwort eingeben">
+    <button onclick="checkPassword()">Bestätigen</button>
+</body>
+</html>
