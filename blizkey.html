@@ -5,47 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creator Plattform</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        nav { margin-bottom: 20px; }
-        button { padding: 10px; margin: 5px; cursor: pointer; }
-        #videoPlayer, #livestream { display: none; width: 80%; margin: auto; }
+        body { font-family: Arial, sans-serif; background-color: #121212; color: #fff; margin: 0; padding: 0; }
+        nav { display: flex; justify-content: center; padding: 10px; background-color: #1e1e1e; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        button { padding: 12px 20px; margin: 5px; cursor: pointer; background: #0073e6; color: #fff; border: none; border-radius: 5px; transition: background 0.3s; }
+        button:hover { background: #005bb5; }
+        .container { max-width: 900px; margin: 80px auto 20px; text-align: center; }
+        .content { display: none; }
+        video, iframe { width: 100%; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); }
     </style>
 </head>
 <body>
-    <h1>Willkommen auf der Creator Plattform</h1>
     <nav>
         <button onclick="showSection('videos')">Videos</button>
         <button onclick="showSection('clips')">Clips</button>
         <button onclick="showSection('livestream')">Livestream</button>
     </nav>
     
-    <div id="videos">
-        <h2>Videos</h2>
-        <video id="videoPlayer" controls>
-            <source src="video.mp4" type="video/mp4">
-            Dein Browser unterstützt kein Video-Tag.
-        </video>
-    </div>
-    
-    <div id="clips" style="display: none;">
-        <h2>Clips</h2>
-        <video id="clipPlayer" controls>
-            <source src="clip.mp4" type="video/mp4">
-            Dein Browser unterstützt kein Video-Tag.
-        </video>
-    </div>
-    
-    <div id="livestream" style="display: none;">
-        <h2>Live Stream</h2>
-        <iframe src="https://player.twitch.tv/?channel=blizkey&parent=mgetz-io.github.io/floatplane-b/blizkey.html" width="80%" height="500" allowfullscreen></iframe>
+    <div class="container">
+        <div id="videos" class="content">
+            <h2>Videos</h2>
+            <video id="videoPlayer" controls>
+                <source src="video.mp4" type="video/mp4">
+                Dein Browser unterstützt kein Video-Tag.
+            </video>
+        </div>
+        
+        <div id="clips" class="content">
+            <h2>Clips</h2>
+            <video id="clipPlayer" controls>
+                <source src="clip.mp4" type="video/mp4">
+                Dein Browser unterstützt kein Video-Tag.
+            </video>
+        </div>
+        
+        <div id="livestream" class="content">
+            <h2>Live Stream</h2>
+            <iframe src="https://player.twitch.tv/?channel=blizkey&parent=mgetz-io.github.io" height="500" allowfullscreen></iframe>
+        </div>
     </div>
     
     <script>
         function showSection(section) {
-            document.getElementById('videos').style.display = 'none';
-            document.getElementById('clips').style.display = 'none';
-            document.getElementById('livestream').style.display = 'none';
-            
+            document.querySelectorAll('.content').forEach(div => div.style.display = 'none');
             document.getElementById(section).style.display = 'block';
         }
     </script>
