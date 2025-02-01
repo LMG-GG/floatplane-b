@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VLetti - Floatplane</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #121212; color: #fff; margin: 0; padding: 0; }
+        .header { background-color: #e63946; padding: 20px; text-align: center; }
+        .header h1 { margin: 0; }
+        .tabs { display: flex; justify-content: center; margin-top: 20px; }
+        .tab { padding: 10px 20px; margin: 0 10px; cursor: pointer; border: 2px solid #e63946; border-radius: 5px; }
+        .tab:hover { background-color: #e63946; color: #fff; }
+        .content { display: none; margin-top: 20px; }
+        .active { display: block; }
+        .creator-card { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px; 
+            margin: 15px; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            border: 3px solid #e63946; 
+        }
+        .creator-card img { width: 150px; height: 150px; border-radius: 50%; }
+        .video-container, .clip-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .video-card, .clip-card { width: 300px; background-color: #333; border-radius: 10px; padding: 10px; }
+        .video-player, .clip-player { width: 100%; border-radius: 10px; }
+        iframe { width: 100%; height: 100%; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>VLetti auf Floatplane</h1>
+    </div>
+
+    <div class="tabs">
+        <div class="tab" onclick="changeTab('startseite')">Startseite</div>
+        <div class="tab" onclick="changeTab('videos')">Videos</div>
+        <div class="tab" onclick="changeTab('clips')">Clips</div>
+        <div class="tab" onclick="changeTab('livestream')">Livestream</div>
+    </div>
+
+    <div id="startseite" class="content active">
+        <div class="creator-card">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/vletti-profile_image-70x70.png" alt="VLetti">
+            <div class="creator-info">
+                <h2>VLetti</h2>
+                <p>Hier findest du die neuesten Inhalte von VLetti!</p>
+            </div>
+        </div>
+
+        <div class="video-container">
+            <div class="video-card">
+                <video class="video-player" controls>
+                    <source src="VIDEO_1_URL.mp4" type="video/mp4">
+                    Dein Browser unterstützt dieses Videoformat nicht.
+                </video>
+            </div>
+            <div class="video-card">
+                <video class="video-player" controls>
+                    <source src="VIDEO_2_URL.mp4" type="video/mp4">
+                    Dein Browser unterstützt dieses Videoformat nicht.
+                </video>
+            </div>
+        </div>
+
+        <div class="clip-container">
+            <div class="clip-card">
+                <video class="clip-player" controls>
+                    <source src="CLIP_1_URL.mp4" type="video/mp4">
+                    Dein Browser unterstützt dieses Videoformat nicht.
+                </video>
+            </div>
+            <div class="clip-card">
+                <video class="clip-player" controls>
+                    <source src="CLIP_2_URL.mp4" type="video/mp4">
+                    Dein Browser unterstützt dieses Videoformat nicht.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <div id="videos" class="content">
+        <div class="video-container">
+            <div class="video-card">
+                <video class="video-player" controls>
+                    <source src="VIDEO_1_URL.mp4" type="video/mp4">
+                    Dein Browser unterstützt dieses Videoformat nicht.
+                </video>
+            </div>
+            <div class="video-card">
+                <video class="video-player" controls>
+                    <source src="VIDEO_2_URL.mp4" type="video/mp4">
+                    Dein Browser unterstützt dieses Videoformat nicht.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <div id="clips" class="content">
+        <div class="clip-container">
+            <div class="clip-card">
+                <video class="clip-player" controls>
+                    <source src="CLIP_1_URL.mp4" type="video/mp4">
+                    Dein Browser unterstützt dieses Videoformat nicht.
+                </video>
+            </div>
+            <div class="clip-card">
+                <video class="clip-player" controls>
+                    <source src="CLIP_2_URL.mp4" type="video/mp4">
+                    Dein Browser unterstützt dieses Videoformat nicht.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <div id="livestream" class="content">
+        <iframe src="https://player.twitch.tv/?channel=vletti" frameborder="0" allowfullscreen="true"></iframe>
+    </div>
+
+    <script>
+        function changeTab(tabId) {
+            const tabs = document.querySelectorAll('.content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
