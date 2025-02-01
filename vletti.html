@@ -28,7 +28,7 @@
         .video-container, .clip-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
         .video-card, .clip-card { width: 300px; background-color: #333; border-radius: 10px; padding: 10px; }
         .video-player, .clip-player { width: 100%; border-radius: 10px; }
-        iframe { width: 100%; height: 100%; border-radius: 10px; }
+        iframe, object { width: 100%; height: 600px; border-radius: 10px; }
     </style>
 </head>
 <body>
@@ -119,7 +119,8 @@
     </div>
 
     <div id="livestream" class="content">
-        <iframe src="https://twitch.tv/vletti" frameborder="0" allowfullscreen="true"></iframe>
+        <!-- Minibrowser ohne URL-Leiste für Twitch -->
+        <object data="https://www.twitch.tv/vletti" type="text/html"></object>
     </div>
 
     <script>
