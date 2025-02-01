@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hu_stensaft - Creator</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #121212; color: #fff; margin: 0; padding: 0; text-align: center; }
+        .container { max-width: 900px; margin: 80px auto 20px; }
+        .creator-card { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px; 
+            margin: 15px; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            border: 3px solid transparent;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
+            position: relative;
+        }
+        .creator-card:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .creator-card img { width: 50px; height: 50px; border-radius: 50%; }
+        .creator-info { text-align: center; }
+        .social-icons {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.5);
+            display: flex;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .creator-card:hover .social-icons {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.2s ease;
+        }
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
+        /* Farben für Creator */
+        .hu_stensaft { border-color: #008f39; }
+        /* Animierte Überschrift */
+        h1 {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 4px solid #fff;
+            width: 0;
+            animation: typing 2s steps(30, end) forwards, blink 0.5s infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        .content {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Willkommen bei Hu_stensaft</h1>
+    <p>Hier findest du die neuesten Inhalte von Hu_stensaft!</p>
+    
+    <div class="container">
+        <div class="creator-card hu_stensaft">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/hu_stensaft-profile_image-70x70.png" alt="Hu_stensaft">
+            <div class="creator-info">
+                <h2>Hu_stensaft</h2>
+            </div>
+        </div>
+
+        <div class="video-container">
+            <div class="video-card">
+                <video class="video-player" controls>
+                    <source src="VIDEO_1_URL.mp4" type="video/mp4">
+                    Dein Browser unterstützt dieses Videoformat nicht.
+                </video>
+            </div>
+            <div class="video-card">
+                <video class="video-player" controls>
+                    <source src="VIDEO_2_URL.mp4" type="video/mp4">
+                    Dein Browser unterstützt dieses Videoformat nicht.
+                </video>
+            </div>
+        </div>
+
+        <div class="clip-container">
+            <div class="clip-card">
+                <video class="clip-player" controls>
+                    <source src="CLIP_1_URL.mp4" type="video/mp4">
+                    Dein Browser unterstützt dieses Videoformat nicht.
+                </video>
+            </div>
+            <div class="clip-card">
+                <video class="clip-player" controls>
+                    <source src="CLIP_2_URL.mp4" type="video/mp4">
+                    Dein Browser unterstützt dieses Videoformat nicht.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <div id="videos" class="content">
+        <div class="video-container">
+            <div class="video-card">
+                <video class="video-player" controls>
+                    <source src="VIDEO_1_URL.mp4" type="video/mp4">
+                    Dein Browser unterstützt dieses Videoformat nicht.
+                </video>
+            </div>
+            <div class="video-card">
+                <video class="video-player" controls>
+                    <source src="VIDEO_2_URL.mp4" type="video/mp4">
+                    Dein Browser unterstützt dieses Videoformat nicht.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <div id="clips" class="content">
+        <div class="clip-container">
+            <div class="clip-card">
+                <video class="clip-player" controls>
+                    <source src="CLIP_1_URL.mp4" type="video/mp4">
+                    Dein Browser unterstützt dieses Videoformat nicht.
+                </video>
+            </div>
+            <div class="clip-card">
+                <video class="clip-player" controls>
+                    <source src="CLIP_2_URL.mp4" type="video/mp4">
+                    Dein Browser unterstützt dieses Videoformat nicht.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <div id="livestream" class="content">
+        <iframe src="https://player.twitch.tv/?channel=hu_stensaft" frameborder="0" allowfullscreen="true"></iframe>
+    </div>
+
+    <script>
+        function changeTab(tabId) {
+            const tabs = document.querySelectorAll('.content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
